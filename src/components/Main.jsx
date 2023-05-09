@@ -30,6 +30,7 @@ const Main = () => {
   const moviedb = doc(db,"users",`${user?.email}`)
   const saveShow = async () => {
    
+    if(user?.email) {
    
       await updateDoc(moviedb,{
         savedShows:arrayUnion({
@@ -38,7 +39,9 @@ const Main = () => {
           img:movie.backdrop_path,
         })
       })
-    
+    } else {
+      alert("Please login to save a movie")
+    }
   }
   return (
     <div className="w-full h-[550px] text-white">
