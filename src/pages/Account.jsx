@@ -2,6 +2,9 @@ import React from 'react'
 import SavedShows from '../components/SavedShows'
 import bgimage from "../assets/netflixbg.jpg"
 const Account = () => {
+  const url = window.location.href
+  const  trimurl = url.slice(-7,30)
+  console.log(trimurl)
   return (
     <>
     <div className='w-full text-white'>

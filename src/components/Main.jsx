@@ -7,6 +7,7 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
+  const [movieVideos, setMovieVideos] = useState([])
 
   const movie = movies[Math.floor(Math.random() * movies.length)];
 
@@ -17,6 +18,8 @@ const Main = () => {
   }, []);
   /*   console.log(movie) */
 
+
+  
   const truncateString = (str, num) => {
     if (str?.length > num) {
       return str.slice(0, num) + "..."

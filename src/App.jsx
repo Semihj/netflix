@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -7,8 +7,12 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Account from "./pages/Account";
 import ProtectedRoute from "./components/ProtectedRoute";
+import WatchNow from "./pages/WatchNow";
 
 const App = () => {
+
+
+  
   return (
     <>
       <AuthContextProvider>
@@ -25,6 +29,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path={`/watchnow`} element={<WatchNow />} />
         </Routes>
       </AuthContextProvider>
     </>

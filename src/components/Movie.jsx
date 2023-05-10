@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { arrayUnion,doc,updateDoc } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
+
+export const userContext = createContext()
+
+
+
+
+
 const Movie = ({item}) => {
     const [like, setLike] = useState(false);
     const [saved, setSaved] = useState(false)
@@ -10,14 +18,16 @@ const Movie = ({item}) => {
 
     const movieID = doc(db,"users",`${user?.email}`);
     const saveShow = async () => {
+      e.preventDefault()
       if(user?.email) {
+        
         setLike(!like)
         setSaved(true)
         await updateDoc(movieID,{
           savedShows:arrayUnion({
             id:item.id,
             title:item.title,
-            img:item.backdrop_path
+            img:item.poster_path
           })
         })
       } else {
@@ -27,21 +37,23 @@ const Movie = ({item}) => {
 
   return (
     <div>
-       <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
+      <Link to={`/watchnow${item.id}`}>
+       <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 z-10">
                 <img
                   className="w-full h-auto block "
-                  src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`}
                   alt={item?.title}
                 />
-                <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
+                <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-10 hover:opacity-100 text-white">
                   <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
                     {item?.title}
                   </p>
-                  <p onClick={saveShow}>
-                    {like ? <FaHeart className="absolute top-4 left-4 text-gray-300"/>:<FaRegHeart className="absolute top-4 left-4 text-gray-300 "/>}
+                  <p onClick={saveShow} className="" >
+                    {like ? <FaHeart className="absolute z-20 top-4 left-4 text-gray-300"/>:<FaRegHeart className="absolute z-50 top-4 left-4 text-gray-300 "/>}
                   </p>
                 </div>
               </div>
+        </Link>
     </div>
   )
 }
