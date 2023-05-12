@@ -29,7 +29,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route path={`/watchnow`} element={<WatchNow />} />
+          <Route path="/watchnow/:id" element={<WatchNow />} />
         </Routes>
       </AuthContextProvider>
     </>

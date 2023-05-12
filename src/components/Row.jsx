@@ -33,7 +33,7 @@ const Row = ({ title, fetchURL,rowId }) => {
 
         <div
           className="flex w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
-          id={"slider"+ rowId}
+          id={"slider" + rowId}
         >
           {movies.map((item, id) => (
             <Movie key={id} item={item} />

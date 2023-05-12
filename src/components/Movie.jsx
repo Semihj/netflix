@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../firebase';
@@ -18,11 +18,11 @@ const Movie = ({item}) => {
 
     const movieID = doc(db,"users",`${user?.email}`);
     const saveShow = async () => {
-      e.preventDefault()
+      
       if(user?.email) {
         
         setLike(!like)
-        setSaved(true)
+        
         await updateDoc(movieID,{
           savedShows:arrayUnion({
             id:item.id,
@@ -35,9 +35,15 @@ const Movie = ({item}) => {
       }
     }
 
+    
+    useEffect(() => {
+      
+    }, [item.id]);
+    
+
   return (
     <div>
-      <Link to={`/watchnow${item.id}`}>
+      <Link to={`/watchnow/${item.id}`}>
        <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 z-10">
                 <img
                   className="w-full h-auto block "

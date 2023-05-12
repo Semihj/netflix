@@ -5,9 +5,10 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
+
 const Main = () => {
   const [movies, setMovies] = useState([]);
-  const [movieVideos, setMovieVideos] = useState([])
+  
 
   const movie = movies[Math.floor(Math.random() * movies.length)];
 
@@ -73,7 +74,9 @@ const Main = () => {
           </p>
         </div>
       </div>
+      
     </div>
+
   );
 };
 

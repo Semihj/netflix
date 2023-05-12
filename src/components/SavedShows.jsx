@@ -75,6 +75,7 @@ const SavedShows = () => {
           />
         </div>
       </>
+      
     </div>
   );
 };
