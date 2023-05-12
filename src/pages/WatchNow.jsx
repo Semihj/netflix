@@ -16,7 +16,7 @@ const WatchNow = () => {
     axios
       .get(details(id))
       .then((response) => setMovie(response.data));
-  }, []);
+  }, [id]);
   
   useEffect(() => {
     axios
