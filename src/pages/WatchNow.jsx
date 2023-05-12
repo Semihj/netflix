@@ -24,7 +24,7 @@ const WatchNow = () => {
       .then((response) => setSimilarMovie(response.data.results))
   },[])
 
-console.log(similarMovie)
+
 
   const {user} = UserAuth();
 
@@ -47,7 +47,7 @@ console.log(similarMovie)
 
   return (
     <div className="">
-    <div className="w-full h-[500px] sm:h-[800px] text-white">
+    <div className="w-full h-[700px] sm:h-[800px] text-white">
       <div className="w-full h-full">
         <div className=" absolute w-full h-[800px] bg-gradient-to-tr from-black"></div>
           <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt="" />
@@ -55,7 +55,7 @@ console.log(similarMovie)
             <h1 className='font-bold text-[40px] '>{movie?.title} </h1>
             <div className=" flex sm:hidden gap-6 ">
                 <button className='bg-transparent border p-3 rounded-md'>Watch Now</button>
-                <button className='bg-black border p-3 rounded-md'>Add to List</button>
+                <button className='bg-black border p-3 rounded-md' onClick={saveShow}>Add to List</button>
 
               </div>
             <div className="py-10 w-[300px] sm:w-[500px] ">
@@ -70,7 +70,7 @@ console.log(similarMovie)
         
       </div>
     </div>
-    <div className="flex justify-center  mt-20 sm:mt-5 text-white flex-wrap">
+    <div className="flex justify-center  mt-30 sm:mt-5 text-white flex-wrap">
       {similarMovie.map((movie) => (
         
           <Movie key={movie.id} item={movie}/>

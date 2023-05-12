@@ -38,7 +38,7 @@ const SavedShows = () => {
 
 
   return (
-    <div>
+    <div className="w-full ">
       <>
         <h2 className="text-white font-bold md:text-xl p-4">My shows</h2>
         <div className="relative flex items-center group">
@@ -53,9 +53,9 @@ const SavedShows = () => {
             id={"slider"}
           >
             {movies.map((item, id) => (
-              <div key={id} className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
+              <div key={id} className="w-[400px]  sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
                 <img
-                  className="w-full h-auto block "
+                  className="w-full h-auto  block "
                   src={`https://image.tmdb.org/t/p/w500/${item?.img}`}
                   alt={item?.title}
                 />

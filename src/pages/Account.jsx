@@ -6,7 +6,7 @@ const Account = () => {
  
   return (
     <>
-    <div className='w-full text-white'>
+    <div className='w-full text-white h-[600px]'>
         <img
         className=" w-full h-[400px] object-cover "
         src={bgimage}
@@ -18,8 +18,9 @@ const Account = () => {
 
         </div>
       </div>
+      <SavedShows/>
     </div>
-    <SavedShows/>
+    
     
     </>
   )
