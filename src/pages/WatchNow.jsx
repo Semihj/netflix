@@ -54,8 +54,8 @@ const WatchNow = () => {
           <div className="absolute top-[20%] w-full p-10 mt-10">
             <h1 className='font-bold text-[40px] '>{movie?.title} </h1>
             <div className=" flex sm:hidden gap-6 ">
-                <button className='bg-transparent border p-3 rounded-md'>Watch Now</button>
-                <button className='bg-black border p-3 rounded-md' onClick={saveShow}>Add to List</button>
+                <button className='bg-transparent border p-3 rounded-md hover:scale-125'>Watch Now</button>
+                <button className='bg-black border p-3 rounded-md hover:scale-125' onClick={saveShow}>Add to List</button>
 
               </div>
             <div className="py-10 w-[300px] sm:w-[500px] ">
@@ -70,7 +70,7 @@ const WatchNow = () => {
         
       </div>
     </div>
-    <div className="flex justify-center  mt-30 sm:mt-5 text-white flex-wrap">
+    <div className="flex justify-center  mt-[70px] sm:mt-5 text-white flex-wrap">
       {similarMovie.map((movie) => (
         
           <Movie key={movie.id} item={movie}/>
