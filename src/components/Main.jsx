@@ -4,7 +4,9 @@ import axios from "axios";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-
+import { Audio } from "react-loader-spinner";
+import Lottie from "lottie-react";
+import animationData from "../assets/loader.json"
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
@@ -48,36 +50,46 @@ const Main = () => {
     }
   }
   return (
-    <div className="w-full h-[550px] text-white">
-      <div className="w-full h-full">
-        <div className="absolute w-full h-[550px] bg-gradient-to-tr from-black"></div>
-        <img
-          className="w-full h-full object-cover "
-          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-          alt={movie?.title}
-        />
-        <div className="absolute w-full top-[20%] p-4 md:p-8 ">
-          <h1 className="text-3xl md:text-5xl font-bold">{movie?.title}</h1>
-          <div className="my-4">
-            <button className="border bg-gray-300 text-black border-gray-300 py-2 px-5 hover:bg-transparent hover:text-white hover:scale-[1.1] transition-all">
-              Play
-            </button>
-            <button onClick={saveShow} className="border  text-white border-gray-300 py-2 px-5 ml-4 hover:bg-gray-300 hover:text-black hover:scale-[1.13] transition-all">
-              Watch Later
-            </button>
-          </div>
-          <p className="text-gray-400 text-sm">
-            Released: {movie?.release_date}
-          </p>
-          <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 ">
-            {truncateString(movie?.overview, 150)}
-          </p>
+    <>
+      {!movie ? (
+        <div className="w-full h-full flex items-center justify-center">
+          <Lottie animationData={animationData}/>
         </div>
-      </div>
-      
-    </div>
-
+      ) : (
+        <div className="w-full h-[550px] text-white">
+          <div className="w-full h-full">
+            <div className="absolute w-full h-[550px] bg-gradient-to-tr from-black"></div>
+            <img
+              className="w-full h-full object-cover"
+              src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+              alt={movie?.title}
+            />
+            <div className="absolute w-full top-[20%] p-4 md:p-8">
+              <h1 className="text-3xl md:text-5xl font-bold">{movie?.title}</h1>
+              <div className="my-4">
+                <button className="border bg-gray-300 text-black border-gray-300 py-2 px-5 hover:bg-transparent hover:text-white hover:scale-[1.1] transition-all">
+                  Play
+                </button>
+                <button
+                  onClick={saveShow}
+                  className="border text-white border-gray-300 py-2 px-5 ml-4 hover:bg-gray-300 hover:text-black hover:scale-[1.13] transition-all"
+                >
+                  Watch Later
+                </button>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Released: {movie?.release_date}
+              </p>
+              <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200">
+                {truncateString(movie?.overview, 150)}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
+  
 };
 
 export default Main;
