@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import {TiDelete} from "react-icons/ti"
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { deleteField, doc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -29,13 +30,14 @@ const SavedShows = () => {
   const deleteShow = async (passedID) => {
     try {
       const result = movies.filter((item) => item.id !== passedID);
-      await updateDoc(movieRef, {
-        savedShows: result,
-      });
-    } catch (error) {
-      console.error(error);
+      await updateDoc(movieRef,{
+        savedShows:result
+      })
     }
-  };
+    catch (err) {
+      console.error(err);
+    }
+  }
   console.log(movies)
 
   return (
@@ -54,7 +56,7 @@ const SavedShows = () => {
       {movies?.map((movie) => (
 
           <div className=" flex-none">
-     <Link to={`/watchnow/${movie?.id}`}>
+    
        <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 ">
                 <img
                   className="w-full h-auto block "
@@ -62,13 +64,16 @@ const SavedShows = () => {
                   alt={movie?.title}
                 />
                 <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-10 hover:opacity-100 text-white">
-                  <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
+                   <Link to={`/watchnow/${movie?.id}`}><p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
                     {movie?.title}
+                  </p></Link>
+                  <p className="absolute top-2 left-2  " onClick={() => deleteShow(movie?.id)}>
+                    <TiDelete size={20}/>
                   </p>
                 
                 </div>
               </div>
-        </Link>
+        
        </div>
       ))}</div>
     </div>
