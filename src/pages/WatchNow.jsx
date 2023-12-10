@@ -22,7 +22,7 @@ const WatchNow = () => {
     axios
       .get(requests.requestPopular)
       .then((response) => setSimilarMovie(response.data.results))
-  },[])
+  },[id])
 
 
 
