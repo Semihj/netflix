@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
@@ -10,7 +10,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import WatchNow from "./pages/WatchNow";
 
 const App = () => {
-
+const params = useParams()
+useEffect(() => {
+  window.scrollTo(0,0)
+}, [params])
 
   
   return (
