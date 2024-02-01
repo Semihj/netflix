@@ -52,9 +52,7 @@ const Movie = ({item}) => {
                 />
                 
                 <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-10 hover:opacity-100 text-white">
-                  <Link to={`/watchnow/${item.id}`} onClick={() => {
-        location.reload()
-                  } > <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
+                  <Link to={`/watchnow/${item.id}`}  > <p className="whitespace-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
                     {item?.title}
                   </p></Link>
                   <p onClick={saveShow} className="" >
