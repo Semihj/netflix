@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
-import { Route, Routes, useParams } from "react-router-dom";
+import {BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
@@ -17,7 +17,8 @@ useEffect(() => {
 
   
   return (
-    <>
+    <BrowserRouter>
+      
       <AuthContextProvider>
         <Navbar />
         <Routes>
@@ -35,7 +36,7 @@ useEffect(() => {
           <Route path="/watchnow/:id" element={<WatchNow />} />
         </Routes>
       </AuthContextProvider>
-    </>
+    </BrowserRouter>
   );
 };
 
