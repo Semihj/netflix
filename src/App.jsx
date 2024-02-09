@@ -17,7 +17,7 @@ useEffect(() => {
 
   
   return (
-    <BrowserRouter>
+    
       
       <AuthContextProvider>
         <Navbar />
@@ -36,7 +36,7 @@ useEffect(() => {
           <Route path="/watchnow/:id" element={<WatchNow />} />
         </Routes>
       </AuthContextProvider>
-    </BrowserRouter>
+  
   );
 };
 
