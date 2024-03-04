@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import bgimage from "../assets/netflixbg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import {UserAuth} from "../context/AuthContext";
 import Lottie from "lottie-react";
 import animationData from "../assets/thank-you.json";
 import {AiFillGooglePlusCircle} from  "react-icons/ai"
-import { signInWithPopup } from "firebase/auth";
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
