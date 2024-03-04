@@ -53,13 +53,13 @@ const SavedShows = () => {
       id={"slider"}
     >
       <div className="flex gap-2">
-      {movies?.map((movie) => (
+      {movies?.map((movie,index) => (
 
-          <div className=" flex-none">
+          <div className=" flex-none" key={index}>
     
        <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 ">
                 <img
-                  className="w-full h-auto block "
+                  className="w-full h-[100px] block "
                   src={`https://image.tmdb.org/t/p/w500/${movie?.img}`}
                   alt={movie?.title}
                 />

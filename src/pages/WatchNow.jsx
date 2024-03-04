@@ -48,23 +48,24 @@ const WatchNow = () => {
   return (
     <div className="">
     <div className="w-full h-[700px] sm:h-[800px] text-white">
-      <div className="w-full h-full">
+      <div className="w-full h-full  ">
         <div className=" absolute w-full h-[800px] bg-gradient-to-tr from-black"></div>
           <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt="" />
-          <div className="absolute top-[20%] w-full p-10 mt-10">
+          <div className="absolute top-[20%] w-full p-4 sm:p-10 mt-10">
             <h1 className='font-bold text-[40px] '>{movie?.title} </h1>
             <div className=" flex sm:hidden gap-6 ">
                 <button className='bg-transparent border p-3 rounded-md hover:scale-125'>Watch Now</button>
                 <button className='bg-black border p-3 rounded-md hover:scale-125' onClick={saveShow}>Add to List</button>
 
               </div>
-            <div className="py-10 w-[300px] sm:w-[500px] ">
-              <p>{movie?.overview} </p>
-              <div className="hidden sm:flex p-10 gap-6 ">
+            <div className="py-10   w-[260px] sm:w-[500px] ">
+             
+              <div className="hidden sm:flex  gap-6 ">
                 <button className='bg-transparent border p-3 rounded-md hover:scale-125 transition-all'>Watch Now</button>
                 <button className='bg-black border p-3 rounded-md  hover:scale-125 transition-all' onClick={saveShow}>Add to List</button>
 
               </div>
+               <p>{movie?.overview} </p>
             </div>
           </div>
         

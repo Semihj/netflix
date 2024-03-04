@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import { AuthContextProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
@@ -11,6 +11,10 @@ import WatchNow from "./pages/WatchNow";
 
 const App = () => {
 
+  const params = useLocation()
+useEffect(() => {
+  window.scrollTo(0,0)
+}, [params])
 
   
   return (
