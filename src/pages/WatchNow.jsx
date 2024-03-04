@@ -22,7 +22,7 @@ const WatchNow = () => {
     axios
       .get(requests.requestPopular)
       .then((response) => setSimilarMovie(response.data.results))
-  },[])
+  },[id])
 
 
 
@@ -74,7 +74,7 @@ const WatchNow = () => {
     <div className="flex justify-center  mt-[70px] sm:mt-5 text-white flex-wrap">
       {similarMovie.map((movie) => (
         
-          <Movie key={movie.id} item={movie}/>
+          <Movie key={movie.id}  item={movie}/>
         
       ))}
     </div>
